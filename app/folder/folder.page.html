@@ -1,0 +1,58 @@
+<ion-header [translucent]="true" >
+  <ion-toolbar color="{{sonuc>350 ? 'warning':sonuc==0 ? 'primary':'danger'}}">
+    <ion-title >Sisko App</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+
+  <ion-card color="dark">
+ 
+    <ion-card-content >
+      Lütfen istenilen <strong>Boy</strong> ve <strong> Kilo</strong> bilgileri eksiksiz giriniz.
+    </ion-card-content>
+  </ion-card>
+
+  
+<ion-list>
+ 
+  <ion-item>
+    <ion-range min="20" max="220" color="danger" [(ngModel)]="boy" (ionChange)=hesapla(boy,kilo)>
+      
+     
+      <!--Boy Range-->
+      <ion-label slot="end">{{boy}} cm</ion-label>
+    </ion-range>
+  </ion-item>
+  <!--Kilo Range-->>
+  <ion-item >
+    
+    <ion-range min="10" max="220" color="danger" [(ngModel)]="kilo" (ionChange)=hesapla(boy,kilo) >
+      
+      <ion-label slot="end">{{kilo}} Kg</ion-label>
+    </ion-range>
+  </ion-item>
+
+
+</ion-list>
+
+
+
+
+<ion-card class="{{sonuc>35 ? 'animate__animated animate__jello': ''}}">
+  <ion-card-header>
+    <ion-card-subtitle color="danger">Index Sonuc</ion-card-subtitle>
+    <ion-card-title color="warning">{{sonuc>0 ? (sonuc|number:0):'00.00'}}</ion-card-title>
+  </ion-card-header>
+
+  <ion-card-content>
+    {{(sonuc<20 ? 'ZAYIF': sonuc<25 ? 'NORMAL' :sonuc<30 ? 'HAFİF ŞİŞMAN' :sonuc <35 ? 'ŞİŞMAN':'OBEZ')}}
+  </ion-card-content>
+</ion-card>
+
+
+
+
+</ion-content>
+
